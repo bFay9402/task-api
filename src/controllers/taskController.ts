@@ -29,7 +29,7 @@ export const getTasks = async (req: AuthRequest, res: Response) => {
   }
 
   const tasks = await Task.find(filter)
-    .skip((page) * limit)
+    .skip((page - 1) * limit)
     .limit(limit)
     .sort({ createdAt: -1 });
 
