@@ -11,7 +11,13 @@ dotenv.config();
 
 const app: Application = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://frontend-six-sand-26.vercel.app"
+  ],
+  credentials: true,
+}));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
